@@ -20,7 +20,7 @@ class Product(db.Model):
 class ProductUser(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
-    product_id = db.Column(db.Interger)
+    product_id = db.Column(db.Integer)
 
     UniqueConstraint('user_id', "product_id", name='user_product_unique')
 
