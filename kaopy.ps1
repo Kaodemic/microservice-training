@@ -61,8 +61,16 @@ function DeActivatePythonEnv {
     }
 }
 function RequirementsInstall {
-    ActivatePythonEnv
-    pip install -r requirements.txt
+    try {
+        ActivatePythonEnv
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    }
+    catch {
+        Write-Error  $_.Exception.Message
+        Exit
+    }
 }
 
 do {
@@ -75,9 +83,6 @@ do {
             ClearPythonEnvEachPath
         } '3' {
             ActivatePythonEnv
-        }
-        '4' {
-            RequirementsInstall
         }
         '5' {
             try {
