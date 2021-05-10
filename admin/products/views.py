@@ -49,4 +49,3 @@ class UserAPIView(APIView):
         return Response({
             'id': user.id
         })
-    

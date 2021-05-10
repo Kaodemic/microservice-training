@@ -10,4 +10,5 @@ class Product(models.Model):
 
 
 class User(models.Model):
-    fullname = models.CharField(max_length=200)
+    # fullname = models.CharField(max_length=200)
+    pass
