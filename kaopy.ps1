@@ -1,3 +1,4 @@
+
 function Show-Menu {
     param (
         [string]$Title = 'Kaopy Boilerplate'
@@ -38,7 +39,26 @@ function ClearPythonEnvEachPath {
 }
 
 function ActivatePythonEnv {
-    .\Scripts\Activate.ps1
+    DeActivatePythonEnv
+    try {
+        .\Scripts\Activate.ps1
+        Write-Host "Activated Succesfully!." -ForegroundColor green""
+    }
+    catch {
+        Write-Error $_.Exception.Message 
+        Exit
+    }
+}
+
+function DeActivatePythonEnv {
+    try {
+        .\Scripts\deactivate
+        Write-Host  "...DeActivated!"  -ForegroundColor yellow"" 
+    }
+    catch {
+        Write-Error  $_.Exception.Message
+        Exit
+    }
 }
 function RequirementsInstall {
     ActivatePythonEnv
@@ -60,11 +80,18 @@ do {
             RequirementsInstall
         }
         '5' {
-            python ./admin/manage.py runserver 0.0.0.0:8000
+            try {
+                python ./admin/manage.py runserver 0.0.0.0:8000
+            }
+            catch {
+                Write-Error  $_.Exception.Message
+                Exit
+            }
         }
-        '6'{
+        '6' {
             cd admin; docker-compose.exe up
         }
+      
     }
     pause
 }
