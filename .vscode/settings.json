@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "D:\\source\\repos\\_learning\\microservice-training\\Scripts\\python.exe",
+    "python.pythonPath": "Scripts\\python.exe",
     "python.formatting.provider": "yapf"
 }

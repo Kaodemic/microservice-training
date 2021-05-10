@@ -24,6 +24,8 @@ class ProductViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
+        publish("product_created", serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def retrive(self, request, pk=None):  # /api/products/<string:id>
@@ -41,6 +43,8 @@ class ProductViewSet(viewsets.ViewSet):
     def destroy(self, request, pk=None):  # /api/products/<string:id>
         product = Product.objects.get(id=pk)
         product.delete()
+
+        publish("product_deleted", pk)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
