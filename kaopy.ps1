@@ -9,6 +9,7 @@ function Show-Menu {
     Write-Host "2: Press '2' for Clear Python Virtual Env."
     Write-Host "3: Press '3' for Activate Python Virlual Env."
     Write-Host "4: Press '4' for Install Requirement."
+    Write-Host "5: Press '5' for Start Admin projects."
     Write-Host "Q: Press 'Q' to quit."
 }
 
@@ -56,6 +57,9 @@ do {
         }
         '4' {
             RequirementsInstall
+        }
+        '5' {
+            python ./admin/manage.py runserver 0.0.0.0:8000
         }
     }
     pause
