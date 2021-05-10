@@ -1,0 +1,1 @@
+ curl -d '{"title":"title", "image":"image"}' -H "Content-Type: application/json" -X POST http://localhost:8000/api/products
