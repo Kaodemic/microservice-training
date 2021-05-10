@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from views import ProductViewSet
+from .views import ProductViewSet
 
 urlpatterns = [
     path('products', ProductViewSet.as_view({
         'get': 'list',
         'post': 'create'})),
-    path('products', ProductViewSet.as_view({
+    path('products/<str:pk>', ProductViewSet.as_view({
         'get': 'retrive',
         'put': 'update',
         'delete': 'destroy'}))
