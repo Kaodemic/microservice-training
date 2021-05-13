@@ -1,4 +1,5 @@
 import pika , json
+from main import Product, db
 
 params = pika.URLParameters('amqps://sxwxkysy:mgoDmNss1pIdcPwDeu1K1B6RwHA_xwTt@fly.rmq.cloudamqp.com/sxwxkysy')
 

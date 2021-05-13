@@ -11,4 +11,4 @@
      curl DELETE http://localhost:8000/api/products/1 
 
  ### GET_ALL PRODUCTS
-     curl GET http://localhost:8000/api/products
+     curl http://localhost:8000/api/products

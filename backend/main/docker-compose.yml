@@ -17,9 +17,11 @@ services:
             context: .
             dockerfile: Dockerfile
         command: 'python consumer.py'
+        volumes:
+            - .:/app
         depends_on: 
             - db
-    
+
     db:
         image: mysql:5.7.22
         restart: always
