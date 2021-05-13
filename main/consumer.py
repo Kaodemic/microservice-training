@@ -6,10 +6,10 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 
-channel.queue_declare(queue="admin")
+channel.queue_declare(queue="main")
 
 def callback(ch, method, properties, body):
-    print('Receive in admin')
+    print('Receive in main')
     data = json.loads(body)
 
     print(data)
@@ -31,7 +31,7 @@ def callback(ch, method, properties, body):
         product = Product.query.get(data)
         db.session.delete(product)
         db.session.commit()
-         print('Product Deleted')
+        print('Product Deleted')
 
 channel.basic_consume(queue='main', on_message_callback=callback, auto_ack=True)
 

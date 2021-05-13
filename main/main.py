@@ -1,5 +1,5 @@
 # save this as app.py
-from flask import Flask, escape, request, jsonify
+from flask import Flask, jsonify, abort
 from dataclasses import dataclass
 
 from flask_sqlalchemy import SQLAlchemy
@@ -37,6 +37,7 @@ class ProductUser(db.Model):
 def index():
     return jsonify(Product.query.all())
 
+
 @app.route('/api/products/<int:id>/like', methods=['POST'])
 def like(id):
     # TODO: 
@@ -44,7 +45,7 @@ def like(id):
     json = req.json()
 
     try:
-        productUser = ProductUser(user_id=json['id'],product_id)
+        productUser = ProductUser(user_id=json['id'], product_id=id)
         db.session.add(productUser)
         db.session.commit()
 
