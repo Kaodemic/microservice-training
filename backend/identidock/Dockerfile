@@ -1,4 +1,5 @@
-  
+FROM python:3.4
+
 FROM python:3.4
 
 RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
