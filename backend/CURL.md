@@ -12,3 +12,7 @@
 
  ### GET_ALL PRODUCTS
      curl http://localhost:8000/api/products
+
+
+### POST LIKE
+    curl -H "Content-Type: application/json" -X POST http://localhost:8001/api/products/17/like
