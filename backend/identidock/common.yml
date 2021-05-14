@@ -1,0 +1,10 @@
+identidock:
+  image: amouat/identidock:1.0
+  environment:
+    ENV: DEV
+
+dnmonster:
+  image: amouat/dnmonster:1.0
+  
+redis:
+  image: redis:3

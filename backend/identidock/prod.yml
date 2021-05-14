@@ -1,5 +1,5 @@
 proxy:
-  image: proxy:1.0
+  image: proxy:0.1
   links:
     - identidock
   ports:
@@ -9,13 +9,18 @@ proxy:
     - NGINX_PROXY=http://identidock:9090
 
 identidock:
-  image: amouat/identidock:1.0
-  links:
-    - dnmonster
-    - redis
-  environment:
-    ENV: PROD
+  extends:
+    file: common.yml
+    service: identidock
+    environment:
+      ENV: PROD
+
 dnmonster:
-  image: amouat/dnmonster:1.0
+  extends:
+    file: common.yml
+    service: dnmonster
+
 redis:
-  image: redis:3
+  extends:
+    file: common.yml
+    service: dnmonster
